@@ -1,5 +1,6 @@
 # 2019-kaggle-elo-top-11-solution
 https://www.kaggle.com/c/elo-merchant-category-recommendation
+
 This is the 11th place solution writeup.
 Hello, I would like to congratulate everyone for the efforts they put into this competition. And ELO for hosting such a great competition with interesting data and hair pulling outliers :D
 
