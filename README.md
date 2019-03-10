@@ -82,7 +82,7 @@ Finally we chose:
 
 A model without post processing (Our best stacking sub): CV:3.63019 LB:3.675 and Private LB: 3.599
 A model with post processing: LB:3.666 and Private:3.599
-STUFF THAT DID NOT WORK
+#### STUFF THAT DID NOT WORK
 Of course these last two months were not all roses and rainbows. We pulled our hair trying a lot of things and we failed miserably.
 
 Here are the bloopers of our participation :D :
