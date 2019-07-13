@@ -66,36 +66,19 @@ We used different models for training: LightGBM / Catboost / Xgboost / H2oRF / H
 We tried a couple of NN architectures but it didn't work out for us (Check the last section)
 
 #### STACKING
-We stacked around 32 models using bayesian regression. Our models were well varied that it yielded a score of CV:3.630X LB :3.675
+We stacked around 32 models using linear regression. Our models were well varied that it yielded a score of CV:3.630X LB :3.675
 
 #### POST PROCESSING
 During the last day, we focused on doing some post processing and this is how we cherrypicked our outliers.
 
-we carefully designed a Classifying module that combined four different classifers.
-
-We picked the top 100 outliers predicted from every classifier and then intersected the four sets. This resulted in 21 final outliers.
-
-This gave us a devilish boost on LB. We went from 3.675 to 3.666
+we carefully designed a Classifying module that combined four different classifers and multiply the regression value.
 
 #### SUBMISSIONS
 Finally we chose:
 
-A model without post processing (Our best stacking sub): CV:3.63019 LB:3.675 and Private LB: 3.599
+A model without post processing (Our best stacking sub): CV:3.63019 LB:3.675 and Private LB: 3.601
+
 A model with post processing: LB:3.666 and Private:3.599
-#### STUFF THAT DID NOT WORK
-Of course these last two months were not all roses and rainbows. We pulled our hair trying a lot of things and we failed miserably.
-
-Here are the bloopers of our participation :D :
-
-NN. We tried designing different architectures with the main focus on having a simple NN with heavy regularization (BatchNorm and Strong Dropout)
-In the middle of the competition, we tried tackling the outliers detection as an anomaly detection problem using AutoEncoders trained only on the non outliers data
-We tried PCA for more features. And it didn't work
-We tried TSNE. It didn't work
-We tried FM and FFM. It did not work
-We tried isolation forest. Nope. Did not work.
-We had a Ridge-based pairwise ranker that we intended to use for outliers detection but it didn't match with the approach we had.
-We tried a lot of weak models in the hope of adding diversity (simple tree-based, linear, svm, etc.). And guess what? It did not work.
-Anyway, that was a rough wrap up of all the things we did.
 
 Thank you for sparing the time to read this.
 
