@@ -22,11 +22,11 @@ Like most public kernels, we constructed aggregation features. Here's a list of 
     df_data['duration_log1p_counts'] = df_data['durations']/log1p(df_data['card_id_counts'])
     df_data['duration_counts'] = df_data['durations']/df_data['card_id_counts']
 
-2. Categorical features: frequence, Maxfrequence, MaxfrequenceRatio
+2. Categorical features: frequence, Maxfrequence, MaxfrequenceRatio and FM 
 
-3. card_id/merchant_id/mechant_category_id/city_id (visit sequence to sequence embedding)
+3. card_id/merchant_id/mechant_category_id/city_id (visit sequence to sequence embedding by using Word2vec)
 
-4. purchase_amount:hist/new
+4. purchase_amount:hist/new and using NMF to get the features
 
 5. features interactions between hist/new
             df['purchase_amount_ratio_v3'] =                              df['new_purchase_amount_max']/df['hist_purchase_amount_sum']
@@ -62,8 +62,7 @@ The CV score got better in both feature sets.
 After this, our best models scored around CV:3.639X LB:3.682
 
 #### MODELS
-We used different models for training: LightGBM / Catboost / Xgboost / H2oRF / H2oGBM. 
-We tried a couple of NN architectures but it didn't work out for us (Check the last section)
+We used different models for training: LightGBM / Xgboost / H2oRF / H2oGBM,also we tried a couple of NN architectures.
 
 #### STACKING
 We stacked around 32 models using linear regression. Our models were well varied that it yielded a score of CV:3.630X LB :3.675
@@ -76,7 +75,7 @@ we carefully designed a Classifying module that combined four different classife
 #### SUBMISSIONS
 Finally we chose:
 
-A model without post processing (Our best stacking sub): CV:3.63019 LB:3.675 and Private LB: 3.601
+A model without post processing (Our best stacking sub) LB:3.675 and Private LB: 3.610
 
 A model with post processing: LB:3.666 and Private:3.599
 
